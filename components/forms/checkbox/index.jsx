@@ -66,6 +66,10 @@ const Checkbox = createReactClass({
 		 */
 		disabled: PropTypes.bool,
 		/**
+		 * Displays or hides label text for enabled/disabled states.
+		 */
+		displayLabelToggleDescriptor: PropTypes.bool,
+		/**
 		 * Message to display when the Checkbox is in an error state. When this is present, also visually highlights the component as in error.
 		 */
 		errorText: PropTypes.string,
@@ -139,7 +143,8 @@ const Checkbox = createReactClass({
 		return {
 			variant: 'base',
 			labelToggleEnabled: 'Enabled',
-			labelToggleDisabled: 'Disabled'
+			labelToggleDisabled: 'Disabled',
+			displayLabelToggleDescriptor: true
 		};
 	},
 
@@ -294,8 +299,12 @@ const Checkbox = createReactClass({
 					/>
 					<span id={`${this.getId()}-desc`} className="slds-checkbox--faux_container" aria-live="assertive">
 						<span className="slds-checkbox--faux" />
-						<span className="slds-checkbox--on">{props.labelToggleEnabled}</span>
-						<span className="slds-checkbox--off">{props.labelToggleDisabled}</span>
+						{props.displayLabelToggleDescriptor &&
+							<div>
+								<span className="slds-checkbox--on">{props.labelToggleEnabled}</span>
+								<span className="slds-checkbox--off">{props.labelToggleDisabled}</span>
+							</div>
+						}
 					</span>
 				</label>
 				{props.errorText ? <div className="slds-form-element__help">{props.errorText}</div> : null}
