@@ -70,7 +70,7 @@ const Checkbox = createReactClass({
 		 */
 		errorText: PropTypes.string,
 		/**
-		 * Visually hides the label for the _enabled_ and _disabled_ states of the Toggle variant. The respective label from `labelToggleEnabled` or `labelToggleDisabled` will still be read aloud in screenreaders.
+		 * Visually hides the label for the _enabled_ and _disabled_ states of the Toggle variant. The label from `labelToggleEnabled` or `labelToggleDisabled` will still be read aloud in screenreaders.
 		 */
 		hideLabelToggle: PropTypes.bool,
 		/**

@@ -1805,6 +1805,13 @@
                 "required": false,
                 "description": "Message to display when the Checkbox is in an error state. When this is present, also visually highlights the component as in error."
             },
+            "hideLabelToggle": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Visually hides the label for the _enabled_ and _disabled_ states of the Toggle variant. The label from `labelToggleEnabled` or `labelToggleDisabled` will still be read aloud in screenreaders."
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -9031,8 +9038,8 @@
                 "description": "Percentage of progress completion, ranging [0, 100]."
             }
         },
-        "route": "progress-ring",
-        "display-name": "Progress Ring",
+        "route": "progress-rings",
+        "display-name": "Progress Rings",
         "SLDS-component-path": "/components/progress-ring",
         "dependencies": []
     },
