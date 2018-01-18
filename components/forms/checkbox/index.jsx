@@ -70,6 +70,10 @@ const Checkbox = createReactClass({
 		 */
 		errorText: PropTypes.string,
 		/**
+		 * Visually hides the label for the _enabled_ and _disabled_ states of the Toggle variant. The respective label from `labelToggleEnabled` or `labelToggleDisabled` will still be read aloud in screenreaders.
+		 */
+		hideLabelToggle: PropTypes.bool,
+		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support. This ID is added to the `input` element
 		 */
 		id: PropTypes.string,
@@ -81,10 +85,6 @@ const Checkbox = createReactClass({
 		 * An optional label for the Checkbox.
 		 */
 		label: PropTypes.string,
-		/**
-		 * Displays or hides label text for enabled/disabled states.
-		 */
-		labelToggleDescriptor: PropTypes.bool,
 		/**
 		 * Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 		 */
@@ -143,8 +143,7 @@ const Checkbox = createReactClass({
 		return {
 			variant: 'base',
 			labelToggleEnabled: 'Enabled',
-			labelToggleDisabled: 'Disabled',
-			labelToggleDescriptor: true
+			labelToggleDisabled: 'Disabled'
 		};
 	},
 
@@ -299,12 +298,19 @@ const Checkbox = createReactClass({
 					/>
 					<span id={`${this.getId()}-desc`} className="slds-checkbox--faux_container" aria-live="assertive">
 						<span className="slds-checkbox--faux" />
-						{props.labelToggleDescriptor &&
-							<div>
-								<span className="slds-checkbox--on">{props.labelToggleEnabled}</span>
-								<span className="slds-checkbox--off">{props.labelToggleDisabled}</span>
-							</div>
-						}
+						<span
+							className={classNames('slds-checkbox--on',
+								{ 'slds-assistive-text': props.hideLabelToggle }
+							)}
+						>
+							{props.labelToggleEnabled}
+						</span>
+						<span className={classNames('slds-checkbox--off',
+							{ 'slds-assistive-text': props.hideLabelToggle }
+						)}
+						>
+							{props.labelToggleDisabled}
+						</span>
 					</span>
 				</label>
 				{props.errorText ? <div className="slds-form-element__help">{props.errorText}</div> : null}
