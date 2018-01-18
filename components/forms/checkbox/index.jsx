@@ -66,10 +66,6 @@ const Checkbox = createReactClass({
 		 */
 		disabled: PropTypes.bool,
 		/**
-		 * Displays or hides label text for enabled/disabled states.
-		 */
-		displayLabelToggleDescriptor: PropTypes.bool,
-		/**
 		 * Message to display when the Checkbox is in an error state. When this is present, also visually highlights the component as in error.
 		 */
 		errorText: PropTypes.string,
@@ -85,6 +81,10 @@ const Checkbox = createReactClass({
 		 * An optional label for the Checkbox.
 		 */
 		label: PropTypes.string,
+		/**
+		 * Displays or hides label text for enabled/disabled states.
+		 */
+		labelToggleDescriptor: PropTypes.bool,
 		/**
 		 * Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 		 */
@@ -144,7 +144,7 @@ const Checkbox = createReactClass({
 			variant: 'base',
 			labelToggleEnabled: 'Enabled',
 			labelToggleDisabled: 'Disabled',
-			displayLabelToggleDescriptor: true
+			labelToggleDescriptor: true
 		};
 	},
 
@@ -299,7 +299,7 @@ const Checkbox = createReactClass({
 					/>
 					<span id={`${this.getId()}-desc`} className="slds-checkbox--faux_container" aria-live="assertive">
 						<span className="slds-checkbox--faux" />
-						{props.displayLabelToggleDescriptor &&
+						{props.labelToggleDescriptor &&
 							<div>
 								<span className="slds-checkbox--on">{props.labelToggleEnabled}</span>
 								<span className="slds-checkbox--off">{props.labelToggleDisabled}</span>
